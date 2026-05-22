@@ -20,7 +20,7 @@ export default function Testimonials() {
               className="bg-white border border-[#e2ddd4] rounded-2xl p-8 relative"
             >
               <span className="font-display text-[5rem] text-[#e8f0ec] absolute top-2.5 left-6 leading-none pointer-events-none select-none">
-                "
+                &ldquo;
               </span>
               <div className="text-[#f5a623] text-sm mb-3 relative z-10">
                 {"★".repeat(t.stars)}
