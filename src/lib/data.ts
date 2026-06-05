@@ -250,6 +250,33 @@ export const TESTIMONIALS = [
   },
 ];
 
+export const AI_FEATURES = [
+  {
+    icon: "🤖",
+    title: "AI Chat Widget",
+    desc: "A chatbot trained specifically on your business — your services, prices, hours, and FAQs. It answers customer questions at 2am, captures leads, and never takes a sick day. We built one for a Canberra property agency and it helped them win a national innovation award.",
+    tag: "Most popular",
+  },
+  {
+    icon: "📊",
+    title: "Monthly AI Performance Report",
+    desc: "Forget staring at Google Analytics. Every month you get a plain-English summary: which pages are working, where customers drop off, and exactly what to do next. AI speed, reviewed by a real data scientist before it reaches you.",
+    tag: "Included in Pro",
+  },
+  {
+    icon: "✍️",
+    title: "AI Content & SEO Writing",
+    desc: "Fresh blog posts, service pages, and SEO copy — written by AI and tuned to your brand. Keeps your site active, answers the questions your customers are already Googling, and signals to Google that you're worth ranking.",
+    tag: "Add-on",
+  },
+  {
+    icon: "⚡",
+    title: "Instant Lead Follow-up",
+    desc: "The moment someone submits your contact form, AI drafts and sends a personalised reply in your name. The business that responds first almost always wins the job. Now that's always you — even at midnight.",
+    tag: "Add-on",
+  },
+];
+
 export const TEAM = [
   {
     name: "Jigme Tharchen",
