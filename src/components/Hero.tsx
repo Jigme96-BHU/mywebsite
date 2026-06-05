@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -58,7 +59,7 @@ export default function Hero() {
           </div>
 
           <div className="flex items-center gap-5 flex-wrap">
-            {["No lock-in contracts", "Live in 2 weeks", "Aussie-based team"].map(
+            {["No lock-in contracts", "Live in 2 weeks", "Canberra-based engineers"].map(
               (item) => (
                 <div key={item} className="flex items-center gap-1.5 text-sm text-[#8a8a80] font-medium">
                   <span className="w-5 h-5 rounded-full bg-[#e8f0ec] flex items-center justify-center text-[10px] text-[#1e4637] font-bold flex-shrink-0">
@@ -99,25 +100,35 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Stat card */}
-          <div className="float-b absolute w-[170px] bottom-10 right-0 bg-[#1e4637] rounded-2xl shadow-[0_12px_48px_rgba(30,70,55,0.25)] p-6 text-center">
-            <div className="font-display font-bold text-[2rem] text-[#f5a623] leading-none">
-              +342%
+          {/* Team card */}
+          <div className="float-b absolute w-[210px] bottom-10 right-0 bg-white rounded-2xl shadow-[0_12px_48px_rgba(30,70,55,0.16)] p-5 border border-[#e2ddd4]">
+            <div className="flex -space-x-2.5 mb-3">
+              {[
+                { src: "/team/jigme.jpeg", name: "Jigme" },
+                { src: "/team/rohit.jpeg", name: "Rohit" },
+                { src: "/team/palden.jpeg", name: "Palden" },
+              ].map((m) => (
+                <Image
+                  key={m.name}
+                  src={m.src}
+                  alt={m.name}
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-full border-2 border-white object-cover object-top"
+                />
+              ))}
             </div>
-            <div className="text-xs text-white/70 mt-1">
-              more enquiries
-              <br />
-              in 3 months
-            </div>
+            <div className="font-semibold text-sm text-[#1a1a18] mb-0.5">Your dedicated team</div>
+            <div className="text-xs text-[#8a8a80]">Canberra, ACT 🇦🇺</div>
           </div>
 
-          {/* Alert card */}
+          {/* Award card */}
           <div className="float-c absolute w-[200px] top-0 right-8 bg-white rounded-2xl shadow-[0_12px_48px_rgba(30,70,55,0.16)] p-5 border border-[#f5a623]">
-            <div className="text-2xl mb-1.5">🎉</div>
+            <div className="text-2xl mb-1.5">🏆</div>
             <div className="font-semibold text-sm text-[#1a1a18] mb-0.5">
-              New enquiry!
+              REIA Innovation Award
             </div>
-            <div className="text-xs text-[#8a8a80]">Jane found you on Google</div>
+            <div className="text-xs text-[#8a8a80]">Won by a client we built for</div>
           </div>
         </div>
       </div>

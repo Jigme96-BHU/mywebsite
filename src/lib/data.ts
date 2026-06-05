@@ -6,8 +6,8 @@
 export const AGENCY = {
   name: "Sprout Web",
   tagline: "Websites for small business, done properly.",
-  email: "hello@sproutweb.com.au",
-  phone: "0400 000 000",
+  email: "gmetharchen96@gmail.com",
+  phone: "0460 730 115",
   location: "Canberra, ACT, Australia",
   abn: "00 000 000 000",
 };
@@ -15,6 +15,7 @@ export const AGENCY = {
 export const NAV_LINKS = [
   { label: "How It Works", href: "#how" },
   { label: "What's Included", href: "#included" },
+  { label: "Our Team", href: "#team" },
   { label: "Our Work", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
@@ -246,6 +247,36 @@ export const TESTIMONIALS = [
     business: "Morning Ritual Café, Brisbane",
     emoji: "☕",
     bg: "#e8f0ec",
+  },
+];
+
+export const TEAM = [
+  {
+    name: "Jigme Tharchen",
+    role: "Founder & Lead Developer",
+    bio: "4 years building websites across Bhutan and Australia — Jigme has delivered projects that won national awards, powered award-winning agencies, and helped organisations go from no web presence to a genuine competitive edge. He founded Sprout Web after watching small businesses get overcharged for templated work that didn't perform. Every site he ships is custom-built, conversion-focused, and fast.",
+    skills: ["Next.js", "React", "Node.js", "MERN Stack", "AI Integration"],
+    photo: "/team/jigme.jpeg",
+    initials: "JT",
+    avatarBg: "#1e4637",
+  },
+  {
+    name: "Rohit Baral",
+    role: "Analytics & Growth",
+    bio: "Most agencies hand you a website and walk away. Rohit sticks around to make sure it actually works. With a Master's in Data Science and a finance background, he sets up the tracking, dashboards, and conversion analysis that show you exactly what your site is doing for your business — and what to improve next.",
+    skills: ["Google Analytics", "Power BI", "SQL", "Conversion Tracking", "SEO Reporting"],
+    photo: "/team/rohit.jpeg",
+    initials: "RB",
+    avatarBg: "#2c5f4a",
+  },
+  {
+    name: "Palden Zangpo",
+    role: "Web Developer & SEO",
+    bio: "A Cyber Security degree is an unusual background for a web developer — but it's exactly why Palden builds sites that don't get hacked, don't slow down, and don't cut corners. Pair that with hands-on SEO and you get a site that climbs Google rankings from launch day, not six months later.",
+    skills: ["Web Development", "On-Page SEO", "Security", "Performance", "UI / UX"],
+    photo: "/team/palden.jpeg",
+    initials: "PZ",
+    avatarBg: "#f5a623",
   },
 ];
 
