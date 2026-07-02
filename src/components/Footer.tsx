@@ -1,42 +1,51 @@
-import { AGENCY, NAV_LINKS } from "@/lib/data";
+import { AGENCY } from "@/lib/data";
+import Magnetic from "./Magnetic";
+import Reveal from "./Reveal";
+import Clock from "./Clock";
 
+// The field office: the site's destination. Giant contact
+// type on ink, live Canberra readout, underline-reveal links.
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a18] py-12">
-      <div className="max-w-6xl mx-auto px-7">
-        <div className="flex items-start justify-between flex-wrap gap-6">
-          {/* Brand */}
-          <div>
-            <a href="#" className="flex items-center gap-2.5 no-underline mb-2">
-              <div className="w-9 h-9 bg-[#1e4637] rounded-[10px] flex items-center justify-center text-lg flex-shrink-0">
-                🌱
-              </div>
-              <span className="font-display font-bold text-xl">
-                <span className="text-[#f5a623]">Sprout</span>
-                <span className="text-white/85"> Web</span>
-              </span>
-            </a>
-            <p className="text-xs text-white/45 mt-1">{AGENCY.tagline}</p>
-          </div>
-
-          {/* Links */}
-          <ul className="flex gap-7 list-none flex-wrap">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-white/50 text-sm no-underline hover:text-white transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+    <footer id="contact" className="bg-ink text-paper">
+      <div className="px-6 pb-10 pt-24 sm:px-10 sm:pt-32">
+        <div className="gw-label mb-16 flex justify-between text-paper/60">
+          <span>Field office — {AGENCY.location}</span>
+          <span className="hidden text-survey sm:block">{AGENCY.coords}</span>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/[0.08] text-center text-[0.78rem] text-white/30">
-          © {new Date().getFullYear()} {AGENCY.name}. All rights reserved. · ABN{" "}
-          {AGENCY.abn} · {AGENCY.location}
+        <Reveal
+          as="p"
+          onScroll
+          lines={["Let's build", "your plot."]}
+          className="gw-display text-[clamp(3.5rem,13vw,12rem)] text-paper"
+        />
+
+        <div className="mt-14 flex flex-col gap-10 border-t border-paper/15 pt-10 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-3 text-[1.05rem]">
+            <Magnetic className="self-start">
+              <a
+                href={`mailto:${AGENCY.email}`}
+                className="gw-underline text-paper no-underline hover:text-survey"
+              >
+                {AGENCY.email}
+              </a>
+            </Magnetic>
+            <Magnetic className="self-start">
+              <a
+                href={`tel:${AGENCY.phoneIntl}`}
+                className="gw-underline text-paper no-underline hover:text-survey"
+              >
+                {AGENCY.phone}
+              </a>
+            </Magnetic>
+          </div>
+          <div className="gw-label flex flex-col gap-2 text-paper/60 sm:items-end">
+            <Clock />
+            <span>
+              © {new Date().getFullYear()} {AGENCY.name} — websites from the ground up
+            </span>
+          </div>
         </div>
       </div>
     </footer>

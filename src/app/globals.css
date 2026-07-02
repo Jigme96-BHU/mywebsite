@@ -3,77 +3,150 @@
 @tailwind utilities;
 
 :root {
-  --green: #1e4637;
-  --green-mid: #2c5f4a;
-  --green-light: #e8f0ec;
-  --amber: #f5a623;
-  --amber-light: #fff4e0;
-  --cream: #faf8f3;
-  --ink: #1a1a18;
-  --ink-soft: #4a4a44;
-  --ink-muted: #8a8a80;
-  --border: #e2ddd4;
+  --ink: #12130f;
+  --paper: #ede9e3;
+  --survey: #ff4d00;
+}
+
+/* ── Lenis smooth scroll ─────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 html {
-  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink) var(--paper);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border: 3px solid var(--paper);
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--survey);
+  color: var(--ink);
 }
 
 body {
-  background-color: var(--cream);
+  background-color: var(--paper);
   color: var(--ink);
-  font-family: var(--font-dm-sans), sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Grain overlay */
-body::before {
+:focus-visible {
+  outline: 2px solid var(--survey);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ── Type voices ─────────────────────────────────── */
+/* Display: Archivo variable crushed to its condensed end.
+   The wdth axis is animated elsewhere via --wdth. */
+.gw-display {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  font-variation-settings: "wdth" var(--wdth, 62);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+}
+
+.gw-label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Paper grain ─────────────────────────────────── */
+body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 9999;
+  z-index: 90;
   opacity: 0.5;
 }
 
-/* Fade-up animation */
-.fade-up {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+/* ── Split-line reveal (initial state set in CSS so
+      there is no flash before GSAP takes over; if JS
+      never runs, .no-js keeps everything visible) ── */
+.gw-line {
+  display: block;
+  overflow: hidden;
 }
-.fade-up.visible {
+.gw-line > span {
+  display: block;
+  transform: translateY(115%);
+}
+.no-js .gw-line > span,
+.gw-revealed .gw-line > span {
+  transform: none;
+}
+
+/* ── Page-enter transition (template.tsx) ────────── */
+.page-enter {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.no-js .page-enter {
   opacity: 1;
   transform: none;
 }
 
-/* Floating hero cards */
-@keyframes floatA {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
+/* ── Underline reveal for links ──────────────────── */
+.gw-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: 2px;
 }
-@keyframes floatB {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-14px); }
+.gw-underline:hover,
+.gw-underline:focus-visible {
+  background-size: 100% 1px;
 }
-@keyframes floatC {
-  0%, 100% { transform: translateY(0px) rotate(2deg); }
-  50%       { transform: translateY(-8px) rotate(2deg); }
-}
-.float-a { animation: floatA 5s ease-in-out infinite; }
-.float-b { animation: floatB 5s ease-in-out infinite 0.8s; }
-.float-c { animation: floatC 5s ease-in-out infinite 1.6s; }
 
-/* Status pulse */
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.4; }
+/* ── Custom cursor: hide native only where the dot
+      morphs into a labelled control ─────────────── */
+@media (pointer: fine) {
+  [data-cursor] {
+    cursor: none;
+  }
+  [data-cursor] a,
+  [data-cursor] button {
+    cursor: none;
+  }
 }
-.pulse { animation: pulse 1.5s ease infinite; }
 
-/* FAQ accordion */
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
+@media (prefers-reduced-motion: reduce) {
+  .gw-line > span {
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

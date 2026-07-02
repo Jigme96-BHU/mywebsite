@@ -1,35 +1,29 @@
-import Navbar from "@/components/Navbar";
+import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import HowItWorks from "@/components/HowItWorks";
-import WhatIsIncluded from "@/components/WhatIsIncluded";
-import Team from "@/components/Team";
-import AiAddons from "@/components/AiAddons";
-import Portfolio from "@/components/Portfolio";
+import Marquee from "@/components/Marquee";
+import Work from "@/components/Work";
+import Services from "@/components/Services";
 import Pricing from "@/components/Pricing";
-import Testimonials from "@/components/Testimonials";
+import FieldNotes from "@/components/FieldNotes";
+import Studio from "@/components/Studio";
 import Faq from "@/components/Faq";
-import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
-import ContactModal from "@/components/ContactModal";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <Nav />
       <main>
         <Hero />
-<HowItWorks />
-        <WhatIsIncluded />
-        <Team />
-        <AiAddons />
-        <Portfolio />
+        <Marquee />
+        <Work />
+        <Services />
         <Pricing />
-        <Testimonials />
+        <FieldNotes />
+        <Studio />
         <Faq />
-        <Cta />
       </main>
       <Footer />
-      <ContactModal />
     </>
   );
 }
