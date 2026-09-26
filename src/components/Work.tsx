@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PLOTS } from "@/lib/data";
 import PlotShot from "./PlotShot";
 import Reveal from "./Reveal";
@@ -26,14 +25,7 @@ export default function Work() {
 
       <div>
         {PLOTS.map((plot) => {
-          const external = !plot.slug;
-          const linkProps = {
-            "data-cursor": "view",
-            "aria-label": `${plot.name} — ${external ? "live site (opens in new tab)" : "case study"}`,
-            className: "absolute inset-0 z-10",
-          };
-
-          // The whole card is clickable via a stretched link
+          // The whole card opens the live site via a stretched link
           // rather than wrapping it, so the preview button can
           // sit on top without nesting interactive elements.
           return (
@@ -68,14 +60,17 @@ export default function Work() {
 
                 <div className="gw-label flex flex-wrap items-center justify-between gap-2 text-paper/60">
                   <span className="max-w-[36rem] normal-case tracking-normal">{plot.outcome}</span>
-                  <span className="text-paper">{external ? "Live site ↗" : "Case study →"}</span>
+                  <span className="text-paper">Live site ↗</span>
                 </div>
 
-                {external ? (
-                  <a href={plot.url} target="_blank" rel="noopener noreferrer" {...linkProps} />
-                ) : (
-                  <Link href={`/work/${plot.slug}`} {...linkProps} />
-                )}
+                <a
+                  href={plot.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="view"
+                  aria-label={`${plot.name} — live site (opens in new tab)`}
+                  className="absolute inset-0 z-10"
+                />
               </article>
             </div>
           );

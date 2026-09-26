@@ -6,7 +6,7 @@
 export const AGENCY = {
   name: "Sprout Web",
   tagline: "Websites from the ground up.",
-  email: "gmetharchen96@gmail.com",
+  email: "jigmetharchenn@gmail.com",
   phone: "0460 730 115",
   phoneIntl: "+61460730115",
   location: "Canberra ACT, Australia",
@@ -40,12 +40,11 @@ export const MARQUEE_ITEMS = [
   "Sprout Web",
 ];
 
-// Selected work — surveyed plots. `slug` links to a full
-// case study; plots without one link out to the live site.
+// Selected work — surveyed plots. Each card links out to the
+// live site in a new tab.
 export const PLOTS = [
   {
     index: "01",
-    slug: "canberra-property-partners",
     name: "Canberra Property Partners",
     sector: "Real estate",
     loc: "Canberra ACT",
@@ -59,7 +58,6 @@ export const PLOTS = [
   },
   {
     index: "02",
-    slug: "littlebuddhas",
     name: "LittleBuddhas Dharma School",
     sector: "Education",
     loc: "Canberra ACT",
@@ -72,7 +70,6 @@ export const PLOTS = [
   },
   {
     index: "03",
-    slug: "bedurya",
     name: "Bedurya Community Care",
     sector: "Community care",
     loc: "ACT & Queanbeyan",
@@ -85,7 +82,6 @@ export const PLOTS = [
   },
   {
     index: "04",
-    slug: null,
     name: "Australia–Bhutan Association of Canberra",
     sector: "Community",
     loc: "Canberra ACT",
@@ -98,7 +94,6 @@ export const PLOTS = [
   },
   {
     index: "05",
-    slug: null,
     name: "Completely Dogcare",
     sector: "Pet care",
     loc: "Mitchell ACT",
@@ -111,7 +106,6 @@ export const PLOTS = [
   },
   {
     index: "06",
-    slug: null,
     name: "JNW Bhutan Super Fab Lab",
     sector: "Innovation",
     loc: "Bhutan",
@@ -124,7 +118,6 @@ export const PLOTS = [
   },
   {
     index: "07",
-    slug: null,
     name: "Completely Taylored",
     sector: "Bookkeeping",
     loc: "Canberra ACT",
@@ -137,7 +130,6 @@ export const PLOTS = [
   },
   {
     index: "08",
-    slug: null,
     name: "Completely Rescued",
     sector: "Animal rescue",
     loc: "Australia",

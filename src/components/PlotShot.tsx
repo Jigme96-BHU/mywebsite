@@ -31,7 +31,8 @@ export default function PlotShot({
   };
 
   // Caller provides positioning via className; the frame
-  // sits above the card's stretched link (z-10).
+  // sits below the card's stretched link (z-10), which opens
+  // the live site; the preview UI sits above it (z-20).
   return (
     <div className={className}>
       <ParallaxShot src={src} name={name} sizes={sizes} className="absolute inset-0" />
