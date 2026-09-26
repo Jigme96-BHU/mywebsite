@@ -211,8 +211,6 @@ export const PLANS = [
   {
     index: "01",
     name: "Starter",
-    setup: "$499",
-    monthly: "$79",
     featured: false,
     features: [
       "Up to 5 pages",
@@ -226,8 +224,6 @@ export const PLANS = [
   {
     index: "02",
     name: "Growth",
-    setup: "$799",
-    monthly: "$129",
     featured: true,
     features: [
       "Up to 10 pages",
@@ -242,8 +238,6 @@ export const PLANS = [
   {
     index: "03",
     name: "Professional",
-    setup: "$1,299",
-    monthly: "$199",
     featured: false,
     features: [
       "Up to 20 pages",

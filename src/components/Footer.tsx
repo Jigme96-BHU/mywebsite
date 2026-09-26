@@ -2,6 +2,7 @@ import { AGENCY } from "@/lib/data";
 import Magnetic from "./Magnetic";
 import Reveal from "./Reveal";
 import Clock from "./Clock";
+import EnquiryForm from "./EnquiryForm";
 
 // The field office: the site's destination. Giant contact
 // type on ink, live Canberra readout, underline-reveal links.
@@ -20,6 +21,10 @@ export default function Footer() {
           lines={["Let's build", "your plot."]}
           className="gw-display text-[clamp(3.5rem,13vw,12rem)] text-paper"
         />
+
+        <div className="mt-14">
+          <EnquiryForm />
+        </div>
 
         <div className="mt-14 flex flex-col gap-10 border-t border-paper/15 pt-10 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col gap-3 text-[1.05rem]">
