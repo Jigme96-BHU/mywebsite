@@ -50,18 +50,20 @@ export default function Work() {
                   </span>
                 </div>
 
-                <div className="relative flex-1 py-6">
+                {/* Name on the left, site on the right — side by
+                    side from sm up, stacked on phones; never overlapping. */}
+                <div className="flex min-h-0 flex-1 flex-col gap-5 py-6 sm:flex-row sm:gap-10">
+                  <h3 className="gw-display shrink-0 break-words text-[clamp(2.2rem,9vw,3.25rem)] text-paper sm:w-[28%] sm:text-[clamp(2.2rem,4.2vw,4.75rem)]">
+                    {plot.name}
+                  </h3>
                   <PlotShot
                     src={plot.image}
                     name={plot.name}
                     url={plot.url}
                     embeddable={plot.embeddable}
-                    sizes="(min-width: 640px) 78vw, 100vw"
-                    className="absolute inset-x-0 bottom-6 top-[4.5rem] sm:left-[22%] sm:top-6"
+                    sizes="(min-width: 640px) 68vw, 100vw"
+                    className="relative min-h-0 flex-1"
                   />
-                  <h3 className="gw-display relative z-10 max-w-[90%] pt-1 text-[clamp(2.6rem,8vw,7.5rem)] text-paper mix-blend-difference">
-                    {plot.name}
-                  </h3>
                 </div>
 
                 <div className="gw-label flex flex-wrap items-center justify-between gap-2 text-paper/60">
