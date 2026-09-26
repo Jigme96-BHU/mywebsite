@@ -27,7 +27,7 @@ export const HERO = {
   annotation: "Web design & development — site plan no. 001",
   lines: ["From the", "ground up"],
   statement:
-    "A Canberra studio that designs, builds, and runs websites for small businesses — one monthly fee, no lock-in, nothing templated.",
+    "A web studio that designs, builds, and runs websites for small businesses — one monthly fee, no lock-in, nothing templated.",
   facts: ["Team of three", "Live in 14 days", "Client work: REIA Innovation Award"],
 };
 

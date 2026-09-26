@@ -5,6 +5,7 @@ import { AGENCY } from "@/lib/data";
 import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
 import Preloader from "@/components/Preloader";
+import Nav from "@/components/Nav";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -35,11 +36,11 @@ export const metadata: Metadata = {
     template: `%s — ${AGENCY.name}`,
   },
   description:
-    "A Canberra studio that designs, builds, and runs websites for Australian small businesses. One monthly fee, no lock-in, nothing templated.",
+    "A web studio that designs, builds, and runs websites for Australian small businesses. One monthly fee, no lock-in, nothing templated.",
   openGraph: {
     title: `${AGENCY.name} — Websites from the ground up`,
     description:
-      "A Canberra studio that designs, builds, and runs websites for Australian small businesses.",
+      "A web studio that designs, builds, and runs websites for Australian small businesses.",
     type: "website",
     locale: "en_AU",
     siteName: AGENCY.name,
@@ -82,6 +83,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Preloader />
+        {/* Nav lives outside template.tsx's animated wrapper: a
+            transform on any ancestor would stop it staying fixed. */}
+        <Nav />
         <SmoothScroll>{children}</SmoothScroll>
         <Cursor />
       </body>

@@ -1,12 +1,10 @@
 import Link from "next/link";
-import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { AGENCY } from "@/lib/data";
 
 export default function NotFound() {
   return (
     <>
-      <Nav />
       <main className="flex min-h-svh flex-col justify-between px-6 pb-8 pt-24 sm:px-10">
         <div className="gw-label flex justify-between text-ink/60">
           <span>Unsurveyed territory</span>
