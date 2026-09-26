@@ -49,6 +49,9 @@ export default function Cursor() {
     const onOver = (e: MouseEvent) => {
       const t = e.target as Element;
       setMode(!!t.closest?.('[data-cursor="view"]'));
+      // Iframes swallow mouse events, so the dot would freeze
+      // at their edge — hide it over [data-cursor="none"].
+      dot.style.opacity = t.closest?.('[data-cursor="none"]') ? "0" : "1";
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });

@@ -59,7 +59,7 @@ export default function ParallaxShot({
           fill
           sizes={sizes}
           priority={priority}
-          className="object-cover object-top"
+          className="object-cover object-left-top sm:object-top"
         />
       </div>
     </div>

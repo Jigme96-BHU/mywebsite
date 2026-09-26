@@ -129,11 +129,11 @@ body::after {
 /* ── Custom cursor: hide native only where the dot
       morphs into a labelled control ─────────────── */
 @media (pointer: fine) {
-  [data-cursor] {
+  [data-cursor="view"] {
     cursor: none;
   }
-  [data-cursor] a,
-  [data-cursor] button {
+  [data-cursor="view"] a,
+  [data-cursor="view"] button {
     cursor: none;
   }
 }

@@ -94,12 +94,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     name: "Bedurya Community Care",
     index: "03",
     sector: "Community care",
-    loc: "Australia",
+    loc: "ACT & Queanbeyan",
     year: "2026",
-    url: "https://bedurya.com.au/",
-    inProgress: true,
+    url: "https://www.bedurya.com.au/",
+    inProgress: false,
     summary:
-      "An accessible, trust-first website for an Australian NDIS community care provider — currently in active development.",
+      "An accessible, trust-first website for a nurse-led NDIS and DVA community care provider in the ACT and Queanbeyan.",
     stack: ["Next.js", "React", "WCAG AA"],
     scope: ["Design", "Development", "Accessibility", "SEO"],
     sections: [
@@ -111,18 +111,18 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: "The build",
         heading: "Accessibility as the foundation, not the audit",
-        body: "We're building Bedurya's site accessibility-first: semantic structure, real keyboard navigation, and plain-language content architecture that explains services the way participants and their families actually ask about them. Warm and human in tone — never clinical, never corporate.",
+        body: "We built Bedurya's site accessibility-first: semantic structure, real keyboard navigation, and plain-language content architecture that explains services the way participants and their families actually ask about them. Warm and human in tone — never clinical, never corporate.",
       },
       {
         label: "The outcome",
-        heading: "Launching with purpose",
-        body: "The site is in active development, launching with clear service explanations and referral pathways. It's being built to grow with the organisation as their community and services expand.",
+        heading: "Live, and built to grow",
+        body: "The site is live, with clear service explanations and referral pathways for participants and their families. It's built to grow with the organisation as their community and services expand.",
       },
     ],
     outcomes: [
       "WCAG-first build from day one",
       "Plain-language NDIS services architecture",
-      "In active development",
+      "Live across the ACT & Queanbeyan",
     ],
   },
 ];

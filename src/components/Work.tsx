@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { PLOTS } from "@/lib/data";
-import ParallaxShot from "./ParallaxShot";
+import PlotShot from "./PlotShot";
 import Reveal from "./Reveal";
 
 // Selected work as a stack of surveyed plots: each panel is
 // position-sticky, so the next case slides over the last —
-// the stack itself needs no JS. GSAP (inside ParallaxShot)
-// only drives the clipped image reveal.
+// the stack itself needs no JS. PlotShot handles the image
+// reveal and the opt-in live preview.
 export default function Work() {
   return (
     <section id="work" className="bg-ink text-paper">
@@ -26,57 +26,55 @@ export default function Work() {
 
       <div>
         {PLOTS.map((plot) => {
-          const inner = (
-            <article className="flex h-svh flex-col justify-between px-6 pb-6 pt-20 sm:px-10">
-              <div className="gw-label flex flex-wrap justify-between gap-2 border-t border-paper/15 pt-4 text-paper/60">
-                <span>
-                  <span className="mr-2 text-survey">Plot {plot.index}</span>
-                  {plot.sector}
-                </span>
-                <span>
-                  {plot.loc} — {plot.year}
-                  {plot.inProgress && <span className="ml-3 text-survey">In progress</span>}
-                </span>
-              </div>
+          const external = !plot.slug;
+          const linkProps = {
+            "data-cursor": "view",
+            "aria-label": `${plot.name} — ${external ? "live site (opens in new tab)" : "case study"}`,
+            className: "absolute inset-0 z-10",
+          };
 
-              <div className="relative flex-1 py-6">
-                <ParallaxShot
-                  src={plot.image}
-                  name={plot.name}
-                  sizes="(min-width: 640px) 78vw, 100vw"
-                  className="absolute inset-x-0 bottom-6 top-[4.5rem] sm:left-[22%] sm:top-6"
-                />
-                <h3 className="gw-display relative z-10 max-w-[90%] pt-1 text-[clamp(2.6rem,8vw,7.5rem)] text-paper mix-blend-difference">
-                  {plot.name}
-                </h3>
-              </div>
-
-              <div className="gw-label flex flex-wrap items-center justify-between gap-2 text-paper/60">
-                <span className="max-w-[36rem] normal-case tracking-normal">{plot.outcome}</span>
-                <span className="text-paper">
-                  {plot.slug ? "Case study →" : "Live site ↗"}
-                </span>
-              </div>
-            </article>
-          );
-
+          // The whole card is clickable via a stretched link
+          // rather than wrapping it, so the preview button can
+          // sit on top without nesting interactive elements.
           return (
             <div key={plot.index} className="sticky top-0 border-t border-paper/15 bg-ink">
-              {plot.slug ? (
-                <Link href={`/work/${plot.slug}`} data-cursor="view" className="block no-underline">
-                  {inner}
-                </Link>
-              ) : (
-                <a
-                  href={plot.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor="view"
-                  className="block no-underline"
-                >
-                  {inner}
-                </a>
-              )}
+              <article className="relative flex h-svh flex-col justify-between px-6 pb-6 pt-20 sm:px-10">
+                <div className="gw-label flex flex-wrap justify-between gap-2 border-t border-paper/15 pt-4 text-paper/60">
+                  <span>
+                    <span className="mr-2 text-survey">Plot {plot.index}</span>
+                    {plot.sector}
+                  </span>
+                  <span>
+                    {plot.loc} — {plot.year}
+                    {plot.inProgress && <span className="ml-3 text-survey">In progress</span>}
+                  </span>
+                </div>
+
+                <div className="relative flex-1 py-6">
+                  <PlotShot
+                    src={plot.image}
+                    name={plot.name}
+                    url={plot.url}
+                    embeddable={plot.embeddable}
+                    sizes="(min-width: 640px) 78vw, 100vw"
+                    className="absolute inset-x-0 bottom-6 top-[4.5rem] sm:left-[22%] sm:top-6"
+                  />
+                  <h3 className="gw-display relative z-10 max-w-[90%] pt-1 text-[clamp(2.6rem,8vw,7.5rem)] text-paper mix-blend-difference">
+                    {plot.name}
+                  </h3>
+                </div>
+
+                <div className="gw-label flex flex-wrap items-center justify-between gap-2 text-paper/60">
+                  <span className="max-w-[36rem] normal-case tracking-normal">{plot.outcome}</span>
+                  <span className="text-paper">{external ? "Live site ↗" : "Case study →"}</span>
+                </div>
+
+                {external ? (
+                  <a href={plot.url} target="_blank" rel="noopener noreferrer" {...linkProps} />
+                ) : (
+                  <Link href={`/work/${plot.slug}`} {...linkProps} />
+                )}
+              </article>
             </div>
           );
         })}
